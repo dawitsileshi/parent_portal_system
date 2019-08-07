@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Second Community School Project</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/css/smoothproducts.css">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+            <div class="container"><a href="#" class="navbar-brand logo">Mekelle University Community School</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                     id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li role="presentation" class="nav-item"><a href="index.ejs" id="homeId" class="nav-link active">Home</a></li>
+                        <li role="presentation" class="nav-item"><a href="/new_student" id="manageStudentId" class="nav-link">Student</a></li>
+                        <li role="presentation" class="nav-item"><a href="/teacher/enterinfo" id="manageTeacherId" class="nav-link">Teacher</a></li>
+                        <!--<li role="presentation" class="nav-item"><a href="contact-us.ejs" class="nav-link">Contact Us</a></li>-->
+                        <li role="presentation" class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="register-photo" style="margin-top: 50px">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form method="post">
+                <h2 class="text-center"><strong>Student</strong> Registration</h2>
+                <% if(student.fname != "") { %>
+                <div class="form-group">
+                    <input type="text" name="idNumber" placeholder="first name" class="form-control" required value=<%= student.idNumber %> />
+                </div>
+                <% } %>
+
+                <div class="form-group">
+                    <input type="text" name="fname" placeholder="first name" class="form-control" required value=<%= student.fname %> >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="lname" placeholder="last name" required value=<%= student.lname %> >
+                </div>
+                <div class="form-group">
+                    <input type="number" name="age" placeholder="age" class="form-control" required value=<%= student.age %> />
+                </div>
+                <div class="form-group">
+                    <% if(student.gender == "Male") { %>
+                    <div class="form-check">
+                        <input type="radio" name="gender" value="Male" class="form-check-input" id="formCheck-1" checked/>
+                        <label class="form-check-label" for="formCheck-1">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="gender" value="Female" id="formCheck-2" required/>
+                        <label class="form-check-label" for="formCheck-2">Female</label>
+                    </div>
+                    <% } else if(student.gender == "Female") { %>
+                    <div class="form-check">
+                        <input type="radio" name="gender" value="Male" class="form-check-input" id="formCheck-3" required/>
+                        <label class="form-check-label" for="formCheck-1">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="gender" value="Female" id="formCheck-4" checked/>
+                        <label class="form-check-label" for="formCheck-2">Female</label>
+                    </div>
+                    <% } else { %>
+                    <div class="form-check">
+                        <input type="radio" name="gender" value="Male" class="form-check-input" id="formCheck-5"  required/>
+                        <label class="form-check-label" for="formCheck-1">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="gender" value="Female" id="formCheck-6" required/>
+                        <label class="form-check-label" for="formCheck-2">Female</label>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="grade" placeholder="grade" class="form-control" max="12" min="1" required value=<%= student.grade %> />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="section" placeholder="section" class="form-control" required value=<%= student.section %> >
+                </div>
+                <h5>Family Contact</h5>
+                <div class="form-group">
+                    <input type="email" name="familyEmail" placeholder="email" class="form-control" required value=<%= student.familyContact[0]. email %>>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="familyTel" placeholder="tel" class="form-control" required value=<%= student.familyContact[0].tel %> >
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<input type="file" name="pic" required>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <%if(student.fname == "") { %>
+                    <button formaction="/api/student" class="btn btn-primary btn-block" type="submit">Register</button>
+                    <% } else { %>
+                    <button formaction="/api/existingStudent" class="btn btn-primary btn-block" type="submit">Update Account</button>
+                    <% } %>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="/js/smoothproducts.min.js"></script>
+    <script src="/js/theme.js"></script>
+</body>
+
+</html>

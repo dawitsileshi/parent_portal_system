@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ParentPortal</string>
+    <string name="fname">first name</string>
+    <string name="welcome">Welcome</string>
+    <string name="lname">last name</string>
+    <string name="uname">user name</string>
+    <string name="phone">+251</string>
+    <string name="email">/@gmail.com</string>
+    <string name="password">password</string>
+    <string name="confirm_password">repeat password</string>
+    <string name="token_from_sms">token from email</string>
+    <string name="register">Register</string>
+    <string name="relation">Relation</string>
+    <string name="view_profile">View Profile</string>
+    <string name="logout">Log out</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="chat">Chat</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="add_parent">Add Parent</string>
+    <string name="update_account">Update Account</string>
+</resources>
